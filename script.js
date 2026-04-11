@@ -17,10 +17,18 @@ async function getWeather(city) {
     const response = await fetch(URL);
     const data = await response.json();
 
+    // if city not found
+
+    if (data.cod === '404') {
+        alert("City not found!");
+        return
+    }
+
     cityText.textContent = data.name;
     tempText.textContent = data.main.temp + "°C";
     weatherText.textContent = data.weather[0].main;
   } catch (error) {
+    alert("Something went wrong!");
     console.log("error", error);
   }
 }
