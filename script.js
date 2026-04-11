@@ -4,6 +4,7 @@ const searchBtn = document.querySelector("#searchBtn");
 const cityText = document.querySelector("#cityName");
 const tempText = document.querySelector("#temperature");
 const weatherText = document.querySelector("#weather");
+const icon = document.querySelector("#weatherIcon");
 
 // Hold weather API key
 const apiKey = "04b7afa2009cfdd91b44e48abf7e8b08";
@@ -19,7 +20,7 @@ async function getWeather(city) {
 
     // if city not found
 
-    if (data.cod === '404') {
+    if (data.cod === 404) {
         alert("City not found!");
         return
     }
@@ -27,6 +28,30 @@ async function getWeather(city) {
     cityText.textContent = data.name;
     tempText.textContent = data.main.temp + "°C";
     weatherText.textContent = data.weather[0].main;
+
+
+    // get icon from (open weather)
+     const iconCode = data.weather[0].icon;
+     icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+     const weatherMain = data.weather[0].main.toLowerCase();
+
+    // reseat body class name
+     const body = document.body;
+     body.className = "";
+
+     if (weatherMain.includes("clear")) {
+       body.classList.add("clear");
+     } else if (weatherMain.includes("cloud")) {
+       body.classList.add("clouds");
+     } else if (weatherMain.includes("rain")) {
+       body.classList.add("rain");
+     } else if (weatherMain.includes("mist")) {
+       body.classList.add("mist");
+     } else if (weatherMain.includes("snow")) {
+       body.classList.add("snow");
+     }
+
   } catch (error) {
     alert("Something went wrong!");
     console.log("error", error);
