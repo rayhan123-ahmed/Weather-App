@@ -10,6 +10,23 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+  transition: background 0.5s ease;
+  color: white;
+}
+.clear {
+  background: linear-gradient(to right, #fceabb, #f8b500);
+}
+.clouds {
+  background: linear-gradient(to right, #bdc3c7, #2c3e50);
+}
+.rain {
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+}
+.mist {
+  background: linear-gradient(to right, #757f9a, #d7dde8);
+}
+.snow {
+  background: linear-gradient(to right, #e6dada, #274046);
 }
 .container {
   background: rgba(255, 255, 255, 0.25);
