@@ -38,3 +38,10 @@ searchBtn.addEventListener('click',()=>{
     const city = cityInput.value;
     getWeather(city)
 })
+
+// Make enter key work
+cityInput.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter') {
+        getWeather(cityInput.value)
+    }
+});
