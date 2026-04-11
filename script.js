@@ -24,3 +24,9 @@ async function getWeather(city) {
     console.log("error", error);
   }
 }
+
+// add eventListner to show the result on display
+searchBtn.addEventListener('click',()=>{
+    const city = cityInput.value;
+    getWeather(city)
+})
