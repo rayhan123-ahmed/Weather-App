@@ -95,3 +95,7 @@ h1 {
   color: #555;
   text-transform: capitalize;
 }
+.img-box{
+  display: flex;
+  justify-content: center;
+}

@@ -33,7 +33,8 @@ async function getWeather(city) {
     // get icon from (open weather)
      const iconCode = data.weather[0].icon;
      icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
+     icon.style.display = "block";
+     
      const weatherMain = data.weather[0].main.toLowerCase();
 
     // reseat body class name
