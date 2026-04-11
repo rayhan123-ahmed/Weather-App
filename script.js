@@ -21,38 +21,36 @@ async function getWeather(city) {
     // if city not found
 
     if (data.cod === 404) {
-        alert("City not found!");
-        return
+      alert("City not found!");
+      return;
     }
 
     cityText.textContent = data.name;
     tempText.textContent = data.main.temp + "°C";
     weatherText.textContent = data.weather[0].main;
 
-
     // get icon from (open weather)
-     const iconCode = data.weather[0].icon;
-     icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-     icon.style.display = "block";
-     
-     const weatherMain = data.weather[0].main.toLowerCase();
+    const iconCode = data.weather[0].icon;
+    icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    icon.style.display = "block";
+
+    const weatherMain = data.weather[0].main.toLowerCase();
 
     // reseat body class name
-     const body = document.body;
-     body.className = "";
+    const body = document.body;
+    body.className = "";
 
-     if (weatherMain.includes("clear")) {
-       body.classList.add("clear");
-     } else if (weatherMain.includes("cloud")) {
-       body.classList.add("clouds");
-     } else if (weatherMain.includes("rain")) {
-       body.classList.add("rain");
-     } else if (weatherMain.includes("mist")) {
-       body.classList.add("mist");
-     } else if (weatherMain.includes("snow")) {
-       body.classList.add("snow");
-     }
-
+    if (weatherMain.includes("clear")) {
+      body.classList.add("clear");
+    } else if (weatherMain.includes("cloud")) {
+      body.classList.add("clouds");
+    } else if (weatherMain.includes("rain")) {
+      body.classList.add("rain");
+    } else if (weatherMain.includes("mist")) {
+      body.classList.add("mist");
+    } else if (weatherMain.includes("snow")) {
+      body.classList.add("snow");
+    }
   } catch (error) {
     alert("Something went wrong!");
     console.log("error", error);
@@ -60,14 +58,14 @@ async function getWeather(city) {
 }
 
 // add eventListner to show the result on display
-searchBtn.addEventListener('click',()=>{
-    const city = cityInput.value;
-    getWeather(city)
-})
+searchBtn.addEventListener("click", () => {
+  const city = cityInput.value;
+  getWeather(city);
+});
 
 // Make enter key work
 cityInput.addEventListener("keypress", (e) => {
-    if (e.key === 'Enter') {
-        getWeather(cityInput.value)
-    }
+  if (e.key === "Enter") {
+    getWeather(cityInput.value);
+  }
 });
